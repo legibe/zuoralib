@@ -1,0 +1,3 @@
+PyYaml >= 3.11
+suds >= 0.4
+zuora-client >= 1.0
