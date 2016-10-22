@@ -260,4 +260,4 @@ class Zuora(BaseZuora):
         super(Zuora, self).__init__(wsdl, username, password, DEFAULT_SESSION_DURATION)
 
 zclient = Zuora()
-zclient.query(' ')
+print dir(zclient.client)
