@@ -17,4 +17,4 @@ def get_logger(name='zuoralib'):
     logging.config.dictConfig(config['logging'])
     return logger
 
-logger = get_logger
+logger = get_logger()

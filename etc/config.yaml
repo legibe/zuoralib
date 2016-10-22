@@ -7,15 +7,8 @@ zuora_clients:
   dev:
     wsdl: zuora.a.81.0.wsdl.xml
     username: api.test@economist.com
-    password: CXYOfpmSkrD63e6AZ
-    accesspoint: https://apisandbox.zuora.com/
-    rest_accesspoint: https://apisandbox-api.zuora.com/rest/v1/
-    ssl: true
-  test:
-    wsdl: zuora.a.81.0.wsdl.xml
-    username: claude.gibert+api1@datasift.com
     password: CXYOfpmSkrD63e6SB
-    accesspoint: https://apisandbox.zuora.com/
+    accesspoint: https://apisandbox.zuora.com
     rest_accesspoint: https://apisandbox-api.zuora.com/rest/v1/
     ssl: true
 

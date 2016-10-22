@@ -3,7 +3,7 @@
 Transport for Zuora SOAP API
 """
 import httplib2
-
+import requests
 from suds.transport import Reply
 from suds.transport.http import HttpTransport
 from suds.transport.http import HttpAuthenticated
@@ -20,8 +20,12 @@ class HttpTransportWithKeepAlive(HttpAuthenticated, object):
         return HttpTransport.open(self, request)
 
     def send(self, request):
+        headers = request.headers
+        r = requests.post(request.url, data=request.message, headers=request.headers)
+        """
         headers, message = self.http.request(request.url, "POST",
                                              body=request.message,
                                              headers=request.headers)
-        response = Reply(200, headers, message)
+        """
+        response = Reply(200, headers, r.text)
         return response

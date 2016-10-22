@@ -250,7 +250,7 @@ class Zuora(BaseZuora):
     Final SOAP Zuora Client
     """
 
-    def __init__(self,tenant = 'production'):
+    def __init__(self):
         current = config['zuora_client']
         print current
         wsdl = os.path.abspath(config['config_root'] + '/' + config['zuora_clients'][current]['wsdl'])
@@ -260,3 +260,4 @@ class Zuora(BaseZuora):
         super(Zuora, self).__init__(wsdl, username, password, DEFAULT_SESSION_DURATION)
 
 zclient = Zuora()
+zclient.query(' ')
