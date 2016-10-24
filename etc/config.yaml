@@ -6,8 +6,6 @@ notification_queue_size: 20
 zuora_clients:
   dev:
     wsdl: zuora.a.81.0.wsdl.xml
-    username: api.test@economist.com
-    password: CXYOfpmSkrD63e6SB
     accesspoint: https://apisandbox.zuora.com
     rest_accesspoint: https://apisandbox-api.zuora.com/rest/v1/
     ssl: true

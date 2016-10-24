@@ -33,6 +33,7 @@ def extractText(text):
 
 
 text = readfile('/Users/claude/Desktop/sub.html')
+text = readfile('/Users/claude/Desktop/account.html')
 table = TagFinder.find_at_least_one(text, 'table')
 current = table[0]
 rows = current.find_all('tr')
