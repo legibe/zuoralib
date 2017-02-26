@@ -15,13 +15,17 @@ class CalloutServer(object):
             self.logger.setLevel(logging.DEBUG)
             server = HTTPServer(converter=JSONFormat())
             router = TreeRouter(server)
-            router.registerAction('start', self.process, 'POST')
+            for action in ['subscriptionCreated', 'amendmentProcessed']:
+                router.registerAction(action, self.process, 'POST')
             for k, i in config['ssl'].items():
                 config['ssl'][k] = os.path.expanduser(i)
             server.run(config['port'],router,config['ssl'])
 
     def process(self, response, data, path):
-        self.logger.info(path)
+        info = []
+        for k, i in data.items():
+            info.append('%s: %s' % (k, str(i)))
+        self.logger.info(str(path) + ', ' + ', '.join(info))
         return 'ok'
 
 CalloutServer()
