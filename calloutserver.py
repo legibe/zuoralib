@@ -8,6 +8,16 @@ from platin.httpservices.jsonformat import JSONFormat
 
 class CalloutServer(object):
 
+    actions = [
+        'subscriptionCreated',
+        'subscriptionStarted',
+        'subscriptionEnded',
+        'amendmentProcessed',
+        'invoiceDue',
+        'paymentDeclined',
+        'paymentProcessed'
+    ]
+
     def __init__(self, *args, **kwargs):
         with open('config.yaml') as f:
             config = yaml.load(f)
@@ -15,7 +25,7 @@ class CalloutServer(object):
             self.logger.setLevel(logging.DEBUG)
             server = HTTPServer(converter=JSONFormat())
             router = TreeRouter(server)
-            for action in ['subscriptionCreated', 'amendmentProcessed']:
+            for action in self.actions:
                 router.registerAction(action, self.process, 'POST')
             for k, i in config['ssl'].items():
                 config['ssl'][k] = os.path.expanduser(i)
