@@ -14,8 +14,8 @@ class CalloutServer(object):
         'subscriptionEnded',
         'amendmentProcessed',
         'invoiceDue',
-        'paymentDeclined',
-        'paymentProcessed'
+        'paymentBounced',
+        'paymentReceived'
     ]
 
     def __init__(self, *args, **kwargs):

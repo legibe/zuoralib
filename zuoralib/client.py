@@ -190,7 +190,7 @@ class BaseZuora(object):
         i = 0
         done = False
         while not done:
-            response = self.client.service.login(self.username, self.password)
+            response = self.client.service.login(self.username, self.password, entityName='EMEA')
             if response.Session is not None:
                 self.set_session(response.Session)
                 done = True
@@ -251,13 +251,10 @@ class Zuora(BaseZuora):
     """
 
     def __init__(self):
-        current = config['zuora_client']
-        print current
-        wsdl = os.path.abspath(config['config_root'] + '/' + config['zuora_clients'][current]['wsdl'])
-        username = config['zuora_clients'][current]['username']
-        password = config['zuora_clients'][current]['password']
-        self.accesspoint = config['zuora_clients'][current].get('accesspoint','http://api.zuora.com/')
-        super(Zuora, self).__init__(wsdl, username, password, DEFAULT_SESSION_DURATION)
+        username = config['username']
+        password = config['password']
+        self.accesspoint = config.get('accesspoint','http://api.zuora.com/')
+        super(Zuora, self).__init__(config['wsdl'], username, password, DEFAULT_SESSION_DURATION)
 
 zclient = Zuora()
-print dir(zclient.client)
+print zclient.query("select Id from Subscription where Status = 'Active'")

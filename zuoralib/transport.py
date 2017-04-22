@@ -19,13 +19,14 @@ class HttpTransportWithKeepAlive(HttpAuthenticated, object):
     def open(self, request):
         return HttpTransport.open(self, request)
 
+
     def send(self, request):
-        headers = request.headers
-        r = requests.post(request.url, data=request.message, headers=request.headers)
         """
         headers, message = self.http.request(request.url, "POST",
                                              body=request.message,
                                              headers=request.headers)
+
         """
-        response = Reply(200, headers, r.text)
+        r = requests.post(request.url, data=request.message, headers=request.headers)
+        response = Reply(200, r.headers, r.text)
         return response

@@ -3,18 +3,21 @@ import logging
 import logging.config
 import yaml
 
-def load_config():
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'etc')
+tenant = 'dev'
 
-    config = yaml.load(file(path + '/config.yaml'))
-    config['config_root'] = path
+def load_config():
+    root = os.path.join(os.path.expanduser('~'), '.creds')
+    path = os.path.join(root, 'zuora.yaml')
+    with open(path) as f:
+        config = yaml.load(f)
+        config = config[tenant]['soap']
+        config['wsdl'] = os.path.join(root, config['wsdl'])
     return config
 
 config = load_config()
 
 def get_logger(name='zuoralib'):
     logger = logging.getLogger(name)
-    logging.config.dictConfig(config['logging'])
     return logger
 
 logger = get_logger()
