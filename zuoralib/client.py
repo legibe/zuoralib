@@ -257,4 +257,8 @@ class Zuora(BaseZuora):
         super(Zuora, self).__init__(config['wsdl'], username, password, DEFAULT_SESSION_DURATION)
 
 zclient = Zuora()
-print zclient.query("select Id from Subscription where Status = 'Active'")
+result = zclient.query("select Name from Subscription where Status = 'Active'")
+print result
+print(dir(result['records'][0]))
+print(result['records'][0]['Name'])
+r = result['records'][0]
