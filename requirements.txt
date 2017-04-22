@@ -1,3 +1,7 @@
-PyYaml >= 3.11
-suds >= 0.4
-zuora-client >= 1.0
+platin==0.0.7
+pyOpenSSL==16.0.0
+PyYAML==3.12
+requests==2.11.0
+service-identity==16.0.0
+six==1.10.0
+suds==0.4

@@ -1,4 +1,0 @@
-ssl:
-    keyfile: ~/.ssl/privateKey.key
-    certfile: ~/.ssl/certificate.cert
-port: 443
