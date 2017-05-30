@@ -19,6 +19,7 @@ class HttpTransportWithKeepAlive(HttpAuthenticated, object):
 
     def send(self, request):
         print(request.url)
+        print(request.message)
         r = requests.post(request.url, data=request.message, headers=request.headers)
         response = Reply(r.status_code, r.headers, r.text)
         return response

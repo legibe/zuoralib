@@ -258,7 +258,7 @@ class Zuora(BaseZuora):
 
 zclient = Zuora()
 result = zclient.query("select Name from Subscription where Status = 'Active'")
-print result
+#print result
 print(dir(result['records'][0]))
 print(result['records'][0]['Name'])
 r = result['records'][0]
